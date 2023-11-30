@@ -11,7 +11,7 @@ def get_movie():
 
     response = requests.get(url, headers=headers)  # headers were missing in your GET request
     soup = BeautifulSoup(response.text, 'html.parser')
-    movieInfoList = soup.find('ol', attrs={'cla ss': 'movie_list'}).find_all('li') if soup.find('ol', attrs={
+    movieInfoList = soup.find('ol', attrs={'class': 'movie_list'}).find_all('li') if soup.find('ol', attrs={
         'class': 'movie_list'}) else []
 
     movie_data = []
@@ -42,4 +42,5 @@ def get_movie():
 
     # Convert the movie data to JSON
     json_data = json.dumps(movie_data, ensure_ascii=False, indent=4)
+    print(json_data)
     return json_data
